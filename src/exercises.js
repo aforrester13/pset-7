@@ -3,11 +3,34 @@ function commonEnd(a, b) {
     return false;
   }
 
-  // write your code here
+  if (a.length < 1 || b.length < 1) {
+    return false;
+  }
+
+  if (a[0] === b[0] || a[a.length - 1] === b[b.length - 1]) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function endsMeet(values, n) {
-  // write your code here
+  let array = []
+  if (values == null) {
+    return array;
+  }
+  if (n >= 0 && values.length >= n && values !== undefined) {
+    let newArray = values.pop();
+    let nextArray = values.shift();
+    return [newArray , nextArray];
+  }
+
+
+  if (values.length >= n) {
+    return [];
+  } else {
+    return array
+  }
 }
 
 function difference(numbers) {
