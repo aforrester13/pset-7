@@ -15,26 +15,51 @@ function commonEnd(a, b) {
 }
 
 function endsMeet(values, n) {
+
   let array = []
-  if (values == null) {
+
+  if (!values || values.length < n || !Number.isInteger(n) || n < 0) {
     return array;
-  }
-  if (n >= 0 && values.length >= n && values !== undefined) {
-    let newArray = values.pop();
-    let nextArray = values.shift();
-    return [newArray , nextArray];
-  }
-
-
-  if (values.length >= n) {
-    return [];
   } else {
-    return array
+      if (n === 0) {
+        return values;
+      }
+
+      for (let i = 0; i < n; i++) {
+        if (values[i] !== undefined) {
+          array.push(values[i])
+        }
+      }
+
+      for (let i = n; i > 0; i--) {
+        if (values[values.length - i] !== undefined) {
+          array.push(values[values.length - i])
+        }
+      }
+      return array;
   }
 }
 
 function difference(numbers) {
-  // write your code here
+
+  if (numbers == undefined || numbers < 1 || Number.isNaN(numbers)) {
+    return undefined;
+  }
+
+  if (numbers !== undefined && numbers >= 1 && !Number.isNaN(numbers)) {
+    let firstElement = numbers[0]
+    let lastElement = numbers[numbers.length - 1]
+
+    let bigInteger = Math.max(firstElement, lastElement)
+    let smallInteger = Math.min(firstElement, lastElement)
+
+    let difference = bigInteger - smallInteger
+
+    return difference
+  }
+
+
+
 }
 
 function max(number) {
