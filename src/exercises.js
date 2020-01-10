@@ -42,16 +42,13 @@ function endsMeet(values, n) {
 
 function difference(numbers) {
 
-  if (numbers == undefined || numbers < 1 || Number.isNaN(numbers)) {
+
+  if (numbers == undefined || numbers < 1 || numbers.some(isNaN)) {
     return undefined;
-  }
+  } else {
 
-  if (numbers !== undefined && numbers >= 1 && !Number.isNaN(numbers)) {
-    let firstElement = numbers[0]
-    let lastElement = numbers[numbers.length - 1]
-
-    let bigInteger = Math.max(firstElement, lastElement)
-    let smallInteger = Math.min(firstElement, lastElement)
+    let bigInteger = Math.max.apply(null, numbers)
+    let smallInteger = Math.min.apply(null, numbers)
 
     let difference = bigInteger - smallInteger
 
