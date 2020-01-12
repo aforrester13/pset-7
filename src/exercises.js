@@ -106,14 +106,26 @@ function middle(values) {
 }
 
 function increasing(numbers) {
-  if (numbers == undefined) {
-    return false;
-  } else if (numbers.length < 3 || numbers.some(!isInteger) || numbers.some(isNaN)) {
-    return false;
+  if (numbers == undefined || numbers == []) {
+    return undefined;
+  } else if (numbers.length < 3 || numbers.some(isNaN)) {
+    return undefined;
   } else {
+
     for (let i = 1; i < numbers.length; i++) {
-      if (numbers[i - 1] === )
+      if ((numbers[i - 1] + 1) === numbers[i]) {
+        i++
+        if ((numbers[i - 1] + 1) === numbers[i]) {
+          return true;
+          break;
+        } else {
+          continue;
+        }
+      } else {
+        continue;
+      }
     }
+    return false;
   }
 }
 
