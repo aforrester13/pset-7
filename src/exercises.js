@@ -60,27 +60,61 @@ function difference(numbers) {
 }
 
 function max(number) {
-  if (number === undefined || number.pop() < 3  || number.some(isNaN)) {
+
+  if (number == undefined || number <= 2 || number.some(isNaN)) {
+
     return undefined;
+
+  } else if (number.length % 2 == 0) {
+
+    return undefined;
+
   } else {
      let lastElement = number[number.length - 1]
-     let middleElement = number[number.length - (number.length / 2)]
+     let middleElement = number[number.length - (Math.ceil(number.length / 2))]
      let firstElement = number[0]
 
      let array = [firstElement, middleElement, lastElement]
 
      let largestValue = Math.max.apply(null, array)
 
-     return largestValue
+     return largestValue;
   }
 }
 
 function middle(values) {
-  // write your code here
+  let array = [];
+
+  if (values == undefined) {
+
+    return [];
+
+  } else if (values.length < 3) {
+
+    return [];
+
+  } else if (values.length % 2 == 0) {
+    return [];
+  } else {
+    let veryMiddleElement = values[values.length - (Math.ceil(values.length / 2))]
+    let leftMiddleElement = values[(values.length - 1) - (Math.ceil(values.length / 2))]
+
+    array.push(leftMiddleElement, veryMiddleElement)
+
+    return array;
+  }
 }
 
 function increasing(numbers) {
-  // write your code here
+  if (numbers == undefined) {
+    return false;
+  } else if (numbers.length < 3 || numbers.some(!isInteger) || numbers.some(isNaN)) {
+    return false;
+  } else {
+    for (let i = 1; i < numbers.length; i++) {
+      if (numbers[i - 1] === )
+    }
+  }
 }
 
 function everywhere(values, x) {
