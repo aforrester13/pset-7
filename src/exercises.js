@@ -186,7 +186,43 @@ function consecutive(numbers) {
 }
 
 function balance(numbers) {
-  // write your code here
+  if (numbers == undefined) {
+    return false;
+  } else if (numbers.length < 2) {
+    return false;
+  } else if (numbers.some(isNaN)) {
+    return false;
+  } else {
+
+    if (numbers.length === 2 && numbers[0] === numbers[1]) {
+      return true;
+    }
+
+    if (numbers.length % 2 === 0) {
+      let x = numbers.length / 2
+
+      let firstHalf = numbers.slice(0, x)
+      let secondHalf = numbers.slice(x, numbers.length)
+
+      let firstHalfSum = 0;
+      let secondHalfSum = 0;
+
+      for (let i = 0; i < firstHalf.length; i++) {
+        firstHalfSum = firstHalfSum + firstHalf[i]
+      }
+
+      for (let y = 0; y < secondHalf.length; y++) {
+        secondHalfSum = secondHalfSum + secondHalf[y]
+      }
+
+      if (firstHalfSum === secondHalfSum) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
   console.log("test");
 }
 
