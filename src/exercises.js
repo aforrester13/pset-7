@@ -161,7 +161,28 @@ function everywhere(values, x) {
 
 
 function consecutive(numbers) {
-  // write your code here
+  if (numbers == undefined) {
+    return false;
+  } else if (numbers.length < 3) {
+    return false;
+  } else if (numbers.some(isNaN)) {
+    return false;
+  } else {
+      for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % 2 === 0 && numbers[i + 1] % 2 === 0 && numbers[i + 2] % 2 === 0 && numbers[i + 1] !== undefined && numbers[i + 2] !== undefined) {
+          return true;
+          break;
+        }
+
+        if (numbers[i] % 2 !== 0 && numbers[i + 1] % 2 !== 0 && numbers[i + 2] % 2 !== 0 && numbers[i + 1] !== undefined && numbers[i + 2] !== undefined) {
+          return true;
+          break;
+        } else {
+          continue;
+        }
+      }
+      return false;
+  }
 }
 
 function balance(numbers) {
