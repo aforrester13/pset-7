@@ -227,7 +227,20 @@ function balance(numbers) {
 }
 
 function clumps(values) {
-  // write your code here
+  if (values == undefined) {
+    return -1;
+  } else {
+      let counter = 0
+
+      for (let i = 0; i < values.length; i++) {
+        if (values[i] === values[i + 1] && values[i] !== values[i - 1]) {
+          counter++
+          if (values[i] === values[i + 1] && values[i] === values[i - 1]) {
+          continue;
+        } 
+      }
+      return counter;
+  }
 }
 
 /*
