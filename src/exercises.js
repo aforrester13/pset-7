@@ -186,48 +186,77 @@ function consecutive(numbers) {
 }
 
 function balance(numbers) {
-  if (numbers == undefined) {
+  let size = 0
+  let sum1 = 0
+  let sum2 = 0
+  let count = 0
+  if (!numbers || numbers.length < 2) {
     return false;
-  } else if (numbers.length < 2) {
-    return false;
-  } else if (numbers.some(isNaN)) {
-    return false;
-  } else {
-
-    if (numbers.length === 2 && numbers[0] === numbers[1]) {
-      return true;
-    }
-
-    if (numbers.length % 2 === 0) {
-      let x = numbers.length / 2
-
-      let firstHalf = numbers.slice(0, x)
-      let secondHalf = numbers.slice(x, numbers.length)
-
-      let firstHalfSum = 0;
-      let secondHalfSum = 0;
-
-      for (let i = 0; i < firstHalf.length; i++) {
-        firstHalfSum = firstHalfSum + firstHalf[i]
-      }
-
-      for (let y = 0; y < secondHalf.length; y++) {
-        secondHalfSum = secondHalfSum + secondHalf[y]
-      }
-
-      if (firstHalfSum === secondHalfSum) {
-        return true;
-      } else {
-        return false;
-      }
+  }
+  for (i = 0; i < numbers.length; i++) {
+    if (!(Number.isInteger(numbers[i]))) {
+      return false;
     }
   }
-
-  console.log("test");
+  for (z = 0; z < numbers.length; z++) {
+    if (numbers[z] == undefined) {
+      return true;
+    }
+  }
+  for (x = numbers.length; x > -1; x--) {
+    sum1 = 0
+    sum2 = 0
+    for(y = numbers.length - x; y > -1; y--) {
+      sum1 = sum1 + numbers[y]
+    }
+    for(a = numbers.length - 1; a > numbers.length - x; a--) {
+      sum2 = sum2 + numbers[a]
+    }
+    if (sum2 == sum1) {
+      count = 1
+      return true;
+    }
+  }
+  if (count == 0) {
+    return false;
+  }
 }
 
 function clumps(values) {
-  // write your code here
+  if (!values) {
+    return -1;
+  }
+  if (values.length < 2) {
+    return 0;
+  }
+  let last = values[0];
+  let current;
+  let clump = 0
+  let count = 0
+  let count2 = 0
+  for (x = 1; x < values.length; x++) {
+    current = values[x]
+    if (last === current) {
+      clump = clump + 1
+      for (y = x; y < values.length; y++) {
+        last = current
+        current = values[y]
+        if (!(last === current)) {
+          count = 1
+          x = y
+          break;
+        }
+        else {
+          count = -1
+        }
+      }
+    }
+    if (count == -1) {
+      break;
+    }
+    last = current
+  }
+  return clump;
 }
 
 /*
